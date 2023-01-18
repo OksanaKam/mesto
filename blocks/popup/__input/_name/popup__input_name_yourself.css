@@ -1,0 +1,12 @@
+.popup__input_name_yourself {
+    margin: 30px auto 0;
+    padding: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+}

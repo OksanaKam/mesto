@@ -1,0 +1,7 @@
+.element__title-group {
+    max-width: 246px;
+    margin: 25px 15px 31px 21px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

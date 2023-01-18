@@ -1,0 +1,17 @@
+.element__like {
+    width: 22px;
+    height: 19px;
+    margin: 5px 5px -1px 0;
+    padding: 0;
+    border: none;
+    background-image: url(../../../images/like.png);
+    background-color: #FFFFFF;
+}
+
+.element__like:hover {
+    cursor: pointer;
+}
+
+.element__like:active {
+    background-image: url(../../../images/blackheart.png);
+}

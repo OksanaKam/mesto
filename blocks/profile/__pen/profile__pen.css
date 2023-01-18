@@ -1,0 +1,20 @@
+.profile__pen {
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 321px) and (max-width: 1279px) {
+    .profile__pen {
+        width: calc(7.5px + (10 - 7.5) * (100vw - 320px) / (1290 - 320));
+        height: calc(7.5px + (10 - 7.5) * (100vw - 320px) / (1280 - 320));
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__pen {
+        width: 7.5px;
+        height: 7.5px;
+    }
+}
