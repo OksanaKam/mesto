@@ -9,12 +9,11 @@
 @import url(../blocks/profile/__profile-info/profile__profile-info.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__pen/profile__pen.css);
 @import url(../blocks/profile/__text/profile__text.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__plus/profile__plus.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__modal/popup__modal.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__container/popup__container.css);

@@ -1,11 +1,12 @@
 .popup__close {
     width: 32px;
     height: 32px;
-    margin-top: 155px;
-    margin-left: calc((100vw - 430px) / 2 + 438px);
-    margin-right: calc((100vw - 430px) / 2 - 40px);
+    align-self: flex-end;
     padding: 0;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../../../images/close.png);
+    background-repeat: no-repeat;
+    background-position: center;
     border: none;
 }
 
@@ -18,8 +19,5 @@
     .popup__close {
         width: 20px;
         height: 20px;
-        margin-top: 87px;
-        margin-left: calc((100vw - 282px) / 2 + 282px - 20px);
-        margin-right: calc(100vw - (100vw - 430px) / 2 + 282px);
     }
 }

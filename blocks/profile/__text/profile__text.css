@@ -1,8 +1,7 @@
 .profile__text {
     width: 336px;
-    height: 18px;
     margin: 16px auto 0;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -27,7 +26,6 @@
 @media screen and (max-width: 320px) {
     .profile__text {
         width: 282px;
-        height: 14px;
         margin-top: 14px;
         font-size: 14px;
         line-height: 17px;

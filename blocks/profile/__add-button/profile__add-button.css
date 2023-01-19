@@ -4,6 +4,9 @@
     margin: 35px 0 35px;
     padding: 0;
     background-color: #000000;
+    background-image: url(../../../images/plus.png);
+    background-repeat: no-repeat;
+    background-position: center;
     box-sizing: border-box;
     border: 2px solid #FFFFFF;
     border-radius: 2px;

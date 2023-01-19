@@ -23,7 +23,8 @@
 
 @media screen and (max-width: 859px) {
     .profile__profile-info {
-        margin: 26px auto 0; 
+        margin: 26px auto 0;
+        justify-content: center; 
     }
 }
 
