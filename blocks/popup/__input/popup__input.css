@@ -1,14 +1,28 @@
 .popup__input {
     width: 358px;
     height: 27px;
+    margin: 54px auto 0;
     padding: 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-@media screen and (max-width: 510px) {
+.popup__input:last-of-type {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 530px) {
     .popup__input {
         width: 238px;
-        height: 27px;
+        margin-top: 75px;
     }
 }

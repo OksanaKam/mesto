@@ -7,6 +7,7 @@
     background-image: url(../../../images/plus.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 22px;
     box-sizing: border-box;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
@@ -20,6 +21,7 @@
 @media screen and (max-width: 859px) {
     .profile__add-button {
         width: 282px;
-        margin: 36px auto 0;
+        margin: 33px auto 0;
+        background-size: 16px;
     }
 }

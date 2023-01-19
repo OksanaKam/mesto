@@ -7,6 +7,7 @@
     background-image: url(../../../images/close.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     border: none;
 }
 
@@ -15,7 +16,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 530px) {
     .popup__close {
         width: 20px;
         height: 20px;

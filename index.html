@@ -9,29 +9,17 @@
 <body>
     <div class="page">
         <header class="header">
-          <img class="header__logo" src="./images/vector.png" alt="место">
-          <hr class="header__line">
+          <img class="header__logo" src="./images/logo.svg" alt="место">
         </header>
         <main class="content">
           <section class="profile">
             <img class="profile__avatar" src="./images/cousteau.jpg" alt="жак ив кусто">
             <div class="profile__profile-info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button" id="profile__edit-button"></button>
-              <div class="popup" id="popup">
-                <div class="popup__modal">
-                  <button class="popup__close" type="button"></button>
-                  <form class="popup__container" id="popup__container">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__input popup__input_name_title" type="text" name="title" value="" required>
-                    <input class="popup__input popup__input_name_yourself" type="text" name="yourself" value="" required>
-                    <button class="popup__submit-button" type="submit">Сохранить</button>
-                  </form>
-                </div>
-              </div>
+              <button class="profile__edit-button" type="button" id="profile__edit-button" aria-label="Редактировать"></button>
               <p class="profile__text">Исследователь океана</p>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" type="button" aria-label="Добавить"></button>
           </section>
           <section>
             <ul class="elements">
@@ -39,42 +27,42 @@
                 <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                 <div class="element__title-group">
                   <h2 class="element__title">Карачаевск</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="element">
                 <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
                 <div class="element__title-group">
                   <h2 class="element__title">Гора Эльбрус</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="element">
                 <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
                 <div class="element__title-group">
                   <h2 class="element__title">Домбай</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="element">
                 <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
                 <div class="element__title-group">
                   <h2 class="element__title">Гора Эльбрус</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="element">
                 <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
                 <div class="element__title-group">
                   <h2 class="element__title">Домбай</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
               <li class="element">
                 <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                 <div class="element__title-group">
                   <h2 class="element__title">Южно-Сахалинск</h2>
-                  <button class="element__like" type="button"></button>
+                  <button class="element__like" type="button" aria-label="Нравится"></button>
                 </div>
               </li>
             </ul>
@@ -83,7 +71,18 @@
         <footer class="footer">
           <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
+        <div class="popup" id="popup">
+          <div class="popup__modal">
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <form class="popup__container" id="popup__container" name="myProfile" method="post">
+              <h2 class="popup__title">Редактировать профиль</h2>
+              <input class="popup__input popup__input_name_title" type="text" name="title" value="" placeholder="name" required>
+              <input class="popup__input popup__input_name_yourself" type="text" name="yourself" value="" placeholder="yourself" required>
+              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+            </form>
+          </div>
+        </div>
     </div>
-    <script src="./index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
