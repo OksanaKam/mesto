@@ -17,13 +17,8 @@
 
 @media screen and (max-width: 859px) {
     .profile__profile-info {
+        max-width: 282px;
         margin: 26px auto 0;
         justify-content: center; 
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .profile__profile-info {
-        max-width: 282px;
     }
 }

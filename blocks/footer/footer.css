@@ -10,7 +10,7 @@
     }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 900px) {
     .footer {
         margin-left: calc((100vw - 580px) / 2);
     }
@@ -24,7 +24,7 @@
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 600px) {
     .footer {
         max-width: 282px;
         margin: 48px auto 0;

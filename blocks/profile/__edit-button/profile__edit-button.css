@@ -6,6 +6,7 @@
     background-image: url(../../../images/pen.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 10px;
     box-sizing: border-box;
     border: 1px solid #FFFFFF;
 }
@@ -35,5 +36,6 @@
         width: 18px;
         height: 18px;
         margin-top: 8px;
+        background-size: 7.5px;
     }
 }
