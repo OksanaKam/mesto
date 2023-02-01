@@ -23,58 +23,16 @@
           </section>
           <section>
             <ul class="elements">
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-                <div class="element__title-group">
-                  <h2 class="element__title">Карачаевск</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-                <div class="element__title-group">
-                  <h2 class="element__title">Гора Эльбрус</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-                <div class="element__title-group">
-                  <h2 class="element__title">Домбай</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус">
-                <div class="element__title-group">
-                  <h2 class="element__title">Гора Эльбрус</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-                <div class="element__title-group">
-                  <h2 class="element__title">Домбай</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
-              <li class="element">
-                <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
-                <div class="element__title-group">
-                  <h2 class="element__title">Южно-Сахалинск</h2>
-                  <button class="element__like" type="button" aria-label="Нравится"></button>
-                </div>
-              </li>
             </ul>
           </section>
         </main>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
-        <div class="popup" id="popup">
+        <div class="popup popup_edit" id="popup-edit">
           <div class="popup__modal">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
-            <form class="popup__container" id="popup__container" name="myProfile" method="post">
+            <form class="popup__container" id="popup__container-edit" name="myProfile" method="post">
               <h2 class="popup__title">Редактировать профиль</h2>
               <input class="popup__input popup__input_name_title" type="text" name="title" value="" placeholder="name" required>
               <input class="popup__input popup__input_name_yourself" type="text" name="yourself" value="" placeholder="yourself" required>
@@ -82,6 +40,36 @@
             </form>
           </div>
         </div>
+        <div class="popup popup_add" id="popup-add">
+          <div class="popup__modal">
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <form class="popup__container" id="popup__container-add" name="myPhotos" method="post">
+              <h2 class="popup__title">Новое место</h2>
+              <input class="popup__input popup__input_name_place" type="text" name="place" value="" placeholder="Название" required>
+              <input class="popup__input popup__input_name_reference" type="text" name="reference" value="" placeholder="Ссылка на картинку" required>
+              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Создать</button>
+            </form>
+          </div>
+        </div>
+        <div class="popup popup_image" id="popup-image">
+          <div class="popup__modal-img">
+            <button class="popup__close" type="button" aria-label="Закрыть"></button>
+            <form class="popup__container-img" id="popup__container-img" name="myPhotos" method="post">
+              <img class="popup__place-image" src="#" alt="place">
+              <h2 class="popup__place-title"></h2>
+            </form>
+          </div>
+        </div>
+        <template id="place">
+          <li class="element">
+            <img class="element__image" alt="place">
+            <div class="element__title-group">
+              <h2 class="element__title"></h2>
+              <button class="element__like" type="button" aria-label="Нравится"></button>
+            </div>
+            <button class="element__trash" type="button" aria-label="Удалить"></button>
+          </li>
+        </template>
     </div>
     <script src="./scripts/index.js"></script>
 </body>
