@@ -40,18 +40,18 @@ const containerImg = document.querySelector("#popup__container-img");
 const closeButtons = document.querySelectorAll('.popup__close');
 
 // popup edit container
-let nameInput = containerEdit.querySelector(".popup__input_name_title");
-let jobInput = containerEdit.querySelector(".popup__input_name_yourself");
-let profileTitle = document.querySelector(".profile__title");
-let profileText = document.querySelector(".profile__text");
+const nameInput = containerEdit.querySelector(".popup__input_name_title");
+const jobInput = containerEdit.querySelector(".popup__input_name_yourself");
+const profileTitle = document.querySelector(".profile__title");
+const profileText = document.querySelector(".profile__text");
 
 // popup add container
-let placeInput = containerAdd.querySelector(".popup__input_name_place");
-let referenceInput = containerAdd.querySelector(".popup__input_name_reference");
+const placeInput = containerAdd.querySelector(".popup__input_name_place");
+const referenceInput = containerAdd.querySelector(".popup__input_name_reference");
 
 // popup image container
-let placeImage = containerImg.querySelector(".popup__place-image");
-let placeTitle = containerImg.querySelector(".popup__place-title");
+const placeImage = containerImg.querySelector(".popup__place-image");
+const placeTitle = containerImg.querySelector(".popup__place-title");
 
 // elements container
 const elements = document.querySelector(".elements");
@@ -66,8 +66,8 @@ renderPlaces();
 
 function createPlace(item) {
   const placeElement = template.cloneNode(true);
-  let cardImage = placeElement.querySelector(".element__image");
-  let cardTitle = placeElement.querySelector(".element__title");
+  const cardImage = placeElement.querySelector(".element__image");
+  const cardTitle = placeElement.querySelector(".element__title");
   cardImage.src = item.link;
   cardImage.alt = item.name;
   cardTitle.textContent = item.name;
@@ -87,13 +87,13 @@ function createPlace(item) {
     return placeElement;
 }
 
-function editButtonHandler(event) {
+function openProfilePopup(event) {
     openPopup(popupEdit);
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileText.textContent;
 }
 
-editButton.addEventListener("click", editButtonHandler);
+editButton.addEventListener("click", openProfilePopup);
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -103,11 +103,11 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function addButtonHandler(event) {
+function openAddPopup(event) {
     openPopup(popupAdd); 
 }
 
-addButton.addEventListener("click", addButtonHandler);
+addButton.addEventListener("click", openAddPopup);
 
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
