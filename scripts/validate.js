@@ -38,6 +38,10 @@ const hasInvalidInput = (inputList) => {
 function setEventListeners (params, formElement) {  
   const inputList = Array.from(formElement.querySelectorAll(params.inputSelector));
   const buttonElement = formElement.querySelector(params.submitButtonSelector);
+  formElement.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(params, inputList, buttonElement), 0})
+  });
 
   inputList.forEach((inputElement) => {  
       inputElement.addEventListener('input', function () {  

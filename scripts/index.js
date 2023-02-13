@@ -37,9 +37,6 @@ const containerEdit = document.querySelector("#popup__container-edit");
 const containerAdd = document.querySelector("#popup__container-add");
 const containerImg = document.querySelector("#popup__container-img");
 
-// popups close buttons
-const closeButtons = document.querySelectorAll('.popup__close');
-
 // popup edit container
 const nameInput = containerEdit.querySelector(".popup__input_name_title");
 const jobInput = containerEdit.querySelector(".popup__input_name_yourself");
@@ -102,11 +99,15 @@ editButton.addEventListener("click", openProfilePopup);
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
+  popup.addEventListener('mousedown', closeButton);
 }
 
 // закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
+  popup.removeEventListener('mousedown', closeButton);
 }
 
 // открытие попапа добавления карточки места
@@ -116,11 +117,19 @@ function openAddPopup(event) {
 
 addButton.addEventListener("click", openAddPopup);
 
-// кнопка закрытия
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
+// закрытие попапа по крестику и оверлею
+function closeButton() {
+  popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        closePopup(popup);
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        closePopup(popup);
+      }
+    });
+  });
+}
 
 // закрытие попапа Профиля
 function handleProfileFormSubmit (evt) {
@@ -146,24 +155,10 @@ function handlePlaceFormSave (evt) {
 
 containerAdd.addEventListener('submit', handlePlaceFormSave);
 
-// закрытие попапов по оверлею
-popups.forEach((overlay) => {
-  const popup = overlay.closest('.popup');
-  overlay.addEventListener('click', (event) => {
-    if (event.target !== event.currentTarget) {
-      return;
-    } 
-    closePopup(popup);
-  });
-});
-
 // закрытие попапов по esc
-popups.forEach((esc) => {
-  const popup = esc.closest('.popup');
-  document.body.addEventListener('keydown', function (e) {
-    var key = e.key;
-    if (key == 'Escape') {
-      closePopup(popup);
-    };
-  });
-});
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
