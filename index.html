@@ -32,29 +32,33 @@
         <div class="popup popup_edit" id="popup-edit">
           <div class="popup__modal">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
-            <form class="popup__container" id="popup__container-edit" name="myProfile" method="post">
+            <form class="popup__container popup__form" id="popup__container-edit" name="myProfile" method="post">
               <h2 class="popup__title">Редактировать профиль</h2>
-              <input class="popup__input popup__input_name_title" type="text" name="title" value="" placeholder="name" required>
-              <input class="popup__input popup__input_name_yourself" type="text" name="yourself" value="" placeholder="yourself" required>
-              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+              <input class="popup__input popup__input_name_title" id="title-input" type="text" name="title" value="" placeholder="name" minlength="2" maxlength="40" required>
+              <span class="popup__input-error title-input-error"></span>
+              <input class="popup__input popup__input_name_yourself" id="yourself-input" type="text" name="yourself" value="" placeholder="yourself" minlength="2" maxlength="200" required>
+              <span class="popup__input-error yourself-input-error"></span>
+              <button class="popup__button popup__button_disabled" type="submit" aria-label="Сохранить" disabled>Сохранить</button>
             </form>
           </div>
         </div>
         <div class="popup popup_add" id="popup-add">
           <div class="popup__modal">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
-            <form class="popup__container" id="popup__container-add" name="myPhotos" method="post">
+            <form class="popup__container popup__form" id="popup__container-add" name="myCards" method="post" novalidate>
               <h2 class="popup__title">Новое место</h2>
-              <input class="popup__input popup__input_name_place" type="text" name="place" value="" placeholder="Название" required>
-              <input class="popup__input popup__input_name_reference" type="text" name="reference" value="" placeholder="Ссылка на картинку" required>
-              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Создать</button>
+              <input class="popup__input popup__input_name_place" id="place-input" type="text" name="place" value="" placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="popup__input-error place-input-error"></span>
+              <input class="popup__input popup__input_name_reference" id="reference-input" type="url" name="reference" value="" placeholder="Ссылка на картинку" required>
+              <span class="popup__input-error reference-input-error"></span>
+              <button class="popup__button popup__button_disabled" type="submit" aria-label="Сохранить" disabled>Создать</button>
             </form>
           </div>
         </div>
         <div class="popup popup_image" id="popup-image">
           <div class="popup__modal-img">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
-            <form class="popup__container-img" id="popup__container-img" name="myPhotos" method="post">
+            <form class="popup__container-img popup__form" id="popup__container-img" name="myPhotos" method="post" novalidate>
               <img class="popup__place-image" src="#" alt="place">
               <h2 class="popup__place-title"></h2>
             </form>
@@ -71,6 +75,7 @@
           </li>
         </template>
     </div>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>
