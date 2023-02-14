@@ -18,11 +18,11 @@ const hideInputError = (params, formElement, inputElement) => {
 const checkInputValidity = (params, formElement, inputElement) => {
     if (!inputElement.validity.valid) {
       showInputError(params, formElement, inputElement, inputElement.validationMessage);
-      inputElement.classList.add('popup__input_invalid');
+      inputElement.classList.add(params.invalidInputClass);
       inputElement.invalid = false;
     } else {
       hideInputError(params, formElement, inputElement);
-      inputElement.classList.remove('popup__input_invalid');
+      inputElement.classList.remove(params.invalidInputClass);
       inputElement.invalid = true;
     }
 };
@@ -80,5 +80,6 @@ enableValidation({
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__error_visible',
+  invalidInputClass: 'popup__input_invalid'
 });
