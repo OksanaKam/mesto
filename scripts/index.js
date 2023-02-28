@@ -1,3 +1,16 @@
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
+const params = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+  invalidInputClass: 'popup__input_invalid'
+});
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -24,6 +37,7 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 // popups open buttons
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -32,10 +46,8 @@ const addButton = document.querySelector(".profile__add-button");
 const popups = document.querySelectorAll('.popup');
 const popupEdit = document.querySelector(".popup_edit");
 const popupAdd = document.querySelector(".popup_add");
-const popupImage = document.querySelector(".popup_image");
 const containerEdit = document.querySelector("#popup__container-edit");
 const containerAdd = document.querySelector("#popup__container-add");
-const containerImg = document.querySelector("#popup__container-img");
 
 // popup edit container
 const nameInput = containerEdit.querySelector(".popup__input_name_title");
@@ -47,45 +59,26 @@ const profileText = document.querySelector(".profile__text");
 const placeInput = containerAdd.querySelector(".popup__input_name_place");
 const referenceInput = containerAdd.querySelector(".popup__input_name_reference");
 
-// popup image container
-const placeImage = containerImg.querySelector(".popup__place-image");
-const placeTitle = containerImg.querySelector(".popup__place-title");
-
 // elements container
 const elements = document.querySelector(".elements");
-const template = document.querySelector("#place").content.querySelector(".element");
+
+// функция создания новой карточки
+function createNewCard(item) {
+  const card = new Card(item, '.element-template');
+  return card.generateCard();
+}
 
 // отображение массива карточек
-function renderPlaces() {
-  const cards = initialCards.map(createPlace);
-  elements.append(...cards);
-}
+initialCards.forEach((item) => {
+  document.querySelector('.elements').append(createNewCard(item)); 
+});
 
-renderPlaces();
+// валидация форм
+const profileFormValidator = new FormValidator(params, popupEdit);
+const placeFormValidator = new FormValidator(params, popupAdd);
 
-// создание карточки места, лайка, удаления карточки
-function createPlace(item) {
-  const placeElement = template.cloneNode(true);
-  const cardImage = placeElement.querySelector(".element__image");
-  const cardTitle = placeElement.querySelector(".element__title");
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  cardTitle.textContent = item.name;
-    placeElement.querySelector(".element__like").addEventListener("click", function(evt) {
-      evt.target.classList.toggle("element__like_active");
-    });
-    placeElement.querySelector(".element__trash").addEventListener("click", function(event) {
-      placeElement.remove();
-    });
-    cardImage.addEventListener("click", function(evt) {
-      openPopup(popupImage);
-      placeImage.src = item.link;
-      placeImage.alt = item.name;
-      placeTitle.textContent = item.name;
-    }) 
-
-    return placeElement;
-}
+profileFormValidator.enableValidation();
+placeFormValidator.enableValidation();
 
 // открытие попапа Профиля
 function openProfilePopup(event) {
@@ -137,14 +130,17 @@ function handleProfileFormSubmit (evt) {
 
 containerEdit.addEventListener('submit', handleProfileFormSubmit);
 
+// функция добавления новой карточки
+function addNewCard () {
+  const placeName = placeInput.value;
+  const placeLink = referenceInput.value;
+  elements.prepend(createNewCard({ name: placeName, link: placeLink}));
+}
+
 // закрытие попапа добавления карточки места
 function handlePlaceFormSave (evt) {
   evt.preventDefault();
-  const placeName = placeInput.value;
-  const placeLink = referenceInput.value;
-
-  const placeElement = createPlace( {name: placeName, link: placeLink});
-  elements.prepend(placeElement);
+  addNewCard()
   closePopup(popupAdd);
   evt.target.reset();
 }
@@ -158,3 +154,5 @@ function closeByEscape(evt) {
     closePopup(openedPopup);
   }
 };
+
+export { closeByEscape };
