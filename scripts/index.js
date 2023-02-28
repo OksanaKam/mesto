@@ -11,43 +11,18 @@ const params = ({
   invalidInputClass: 'popup__input_invalid'
 });
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // popups open buttons
-const editButton = document.querySelector(".profile__edit-button");
-const addButton = document.querySelector(".profile__add-button");
+const buttonEditProfile = document.querySelector(".profile__edit-button");
+const buttonAddCard = document.querySelector(".profile__add-button");
 
 // popups
 const popups = document.querySelectorAll('.popup');
-const popupEdit = document.querySelector(".popup_edit");
-const popupAdd = document.querySelector(".popup_add");
+const popupEdit = document.querySelector(".popup_type_profile");
+const popupAdd = document.querySelector(".popup_type_card-add");
+const popupImage = document.querySelector(".popup_type_picture");
 const containerEdit = document.querySelector("#popup__container-edit");
 const containerAdd = document.querySelector("#popup__container-add");
+const containerImg = document.querySelector("#popup__container-img");
 
 // popup edit container
 const nameInput = containerEdit.querySelector(".popup__input_name_title");
@@ -58,6 +33,10 @@ const profileText = document.querySelector(".profile__text");
 // popup add container
 const placeInput = containerAdd.querySelector(".popup__input_name_place");
 const referenceInput = containerAdd.querySelector(".popup__input_name_reference");
+
+// popup image container
+const placeImage = containerImg.querySelector(".popup__place-image");
+const placeTitle = containerImg.querySelector(".popup__place-title");
 
 // elements container
 const elements = document.querySelector(".elements");
@@ -87,7 +66,7 @@ function openProfilePopup(event) {
     jobInput.value = profileText.textContent;
 }
 
-editButton.addEventListener("click", openProfilePopup);
+buttonEditProfile.addEventListener("click", openProfilePopup);
 
 // открытие попапа
 function openPopup(popup) {
@@ -103,18 +82,23 @@ function closePopup(popup) {
 
 // открытие попапа добавления карточки места
 function openAddPopup(event) {
-    openPopup(popupAdd); 
+  openPopup(popupAdd); 
 }
 
-addButton.addEventListener("click", openAddPopup);
+// открытие попапа картинки места
+function openPopupWithImage(link, name) {
+  placeImage.src = link;
+  placeImage.alt = name;
+  placeTitle.textContent = name;
+  openPopup(popupImage);
+}
+
+buttonAddCard.addEventListener("click", openAddPopup);
 
 // закрытие попапа по крестику и оверлею
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__close')) {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
       closePopup(popup);
     }
   });
@@ -155,4 +139,4 @@ function closeByEscape(evt) {
   }
 };
 
-export { closeByEscape };
+export { openPopupWithImage };

@@ -29,7 +29,7 @@
         <footer class="footer">
           <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
-        <div class="popup popup_edit" id="popup-edit">
+        <div class="popup popup_type_profile" id="popup-edit">
           <div class="popup__modal">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <form class="popup__container popup__form" id="popup__container-edit" name="myProfile" method="post">
@@ -42,7 +42,7 @@
             </form>
           </div>
         </div>
-        <div class="popup popup_add" id="popup-add">
+        <div class="popup popup_type_card-add" id="popup-add">
           <div class="popup__modal">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <form class="popup__container popup__form" id="popup__container-add" name="myCards" method="post" novalidate>
@@ -55,7 +55,7 @@
             </form>
           </div>
         </div>
-        <div class="popup popup_image" id="popup-image">
+        <div class="popup popup_type_picture" id="popup-image">
           <div class="popup__modal-img">
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <form class="popup__container-img popup__form" id="popup__container-img" name="myPhotos" method="post" novalidate>
@@ -75,6 +75,7 @@
           </li>
         </template>
     </div>
+    <script src="./scripts/cards.js"></script>
     <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

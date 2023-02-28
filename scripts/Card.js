@@ -1,8 +1,3 @@
-const popupImage = document.querySelector(".popup_image");
-const containerImg = document.querySelector("#popup__container-img");
-const placeImage = containerImg.querySelector(".popup__place-image");
-const placeTitle = containerImg.querySelector(".popup__place-title");
-
 class Card {
   constructor(data, templateSelector) {
       this._name = data.name;
@@ -11,13 +6,11 @@ class Card {
   }
 
   _getTemplate() {
-    const cardElement = document
+    return document
       .querySelector(this._templateSelector)
       .content
       .querySelector('.element')
       .cloneNode(true);
-
-    return cardElement;
   }
 
   _handleImageClick() {
@@ -28,17 +21,9 @@ class Card {
     this._element.remove();
   }
 
-  _handleOpenPopup() {
-    placeImage.src = this._link;
-    placeImage.alt = this._name;
-    placeTitle.textContent = this._name;
-    popupImage.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEscape);
-  }
-
   _setEventListeners() {
     this._element.querySelector('.element__image').addEventListener('click', () => {
-      this._handleOpenPopup();
+      openPopupWithImage(this._link, this._name);
     });
 
     this._element.querySelector('.element__like').addEventListener('click', () => {
@@ -63,4 +48,4 @@ class Card {
 }
 
 export { Card };
-import { closeByEscape } from "./index.js";
+import { openPopupWithImage } from "./index.js";
