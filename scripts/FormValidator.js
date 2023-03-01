@@ -1,7 +1,7 @@
 class FormValidator {
-    constructor(data, popupSelector) {
+    constructor(data, form) {
       this._data = data;
-      this._popupSelector = popupSelector;
+      this._form = form;
       this._formSelector = data.formSelector;
       this._inputSelector = data.inputSelector;
       this._submitButtonSelector = data.submitButtonSelector;
@@ -9,13 +9,13 @@ class FormValidator {
       this._inputErrorClass = data.inputErrorClass;
       this._errorClass = data.errorClass;
       this._invalidInputClass = data.invalidInputClass;
-      this._inputList = Array.from(this._popupSelector.querySelectorAll(this._inputSelector));
-      this._buttonElement = this._popupSelector.querySelector(this._submitButtonSelector);
+      this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+      this._buttonElement = this._form.querySelector(this._submitButtonSelector);
     }
 
     // функция показа элемента ошибки
     _showInputError(inputElement, errorMessage) {
-      const errorElement = this._popupSelector.querySelector(`.${inputElement.id}-error`);
+      const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
       inputElement.classList.add(this._inputErrorClass);
       errorElement.textContent = errorMessage;
       errorElement.classList.add(this._errorClass);
@@ -23,7 +23,7 @@ class FormValidator {
 
     // функция скрытия элемента ошибки
     _hideInputError(inputElement) {
-      const errorElement = this._popupSelector.querySelector(`.${inputElement.id}-error`);
+      const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
       inputElement.classList.remove(this._inputErrorClass);
       errorElement.classList.remove(this._errorClass);
       errorElement.textContent = '';
@@ -43,30 +43,29 @@ class FormValidator {
     };
 
     // функция проверки невалидного поля
-    _hasInvalidInput(inputList) {
-      return inputList.some((inputElement) => {
+    _hasInvalidInput() {
+      return this._inputList.some((inputElement) => {
         return !inputElement.validity.valid;
       });
     };
 
     // функция добавления слушателя всем полям формы
     _setEventListeners() {
-      this._popupSelector.addEventListener('reset', () => {
+      this._form.addEventListener('reset', () => {
         this._disableSubmitButton();
       });
       
       this._inputList.forEach((inputElement) => {  
         inputElement.addEventListener('input', () => {  
           this._checkInputValidity(inputElement);
-          this._toggleButtonState(this._inputList);
-      
+          this._toggleButtonState();
         });  
       }); 
     }; 
       
     // функция стилизации переключения кнопки
-    _toggleButtonState(inputList) {
-      if (this._hasInvalidInput(inputList)) {
+    _toggleButtonState() {
+      if (this._hasInvalidInput()) {
       this._enableSubmitButton();
       } else {
       this._disableSubmitButton();
@@ -85,7 +84,7 @@ class FormValidator {
 
     // функция валидации форм
     enableValidation() {
-      this._popupSelector.addEventListener('submit', (evt) => {
+      this._form.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
       this._setEventListeners();

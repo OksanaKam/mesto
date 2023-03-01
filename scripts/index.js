@@ -83,6 +83,7 @@ function closePopup(popup) {
 // открытие попапа добавления карточки места
 function openAddPopup(event) {
   openPopup(popupAdd); 
+  placeFormValidator._enableSubmitButton();
 }
 
 // открытие попапа картинки места

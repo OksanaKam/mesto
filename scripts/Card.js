@@ -1,3 +1,5 @@
+import { openPopupWithImage } from "./index.js";
+
 class Card {
   constructor(data, templateSelector) {
       this._name = data.name;
@@ -48,4 +50,3 @@ class Card {
 }
 
 export { Card };
-import { openPopupWithImage } from "./index.js";
