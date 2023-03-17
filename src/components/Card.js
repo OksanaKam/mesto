@@ -1,10 +1,9 @@
-import { openPopupWithImage } from "./index.js";
-
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleCardClick) {
       this._name = data.name;
       this._link = data.link;
       this._templateSelector = templateSelector;
+      this._handleCardClick= handleCardClick;
   }
 
   _getTemplate() {
@@ -25,7 +24,7 @@ class Card {
 
   _setEventListeners() {
     this._element.querySelector('.element__image').addEventListener('click', () => {
-      openPopupWithImage(this._link, this._name);
+      this._handleCardClick(this._name, this._link);
     });
 
     this._element.querySelector('.element__like').addEventListener('click', () => {
@@ -40,7 +39,7 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
+     
     this._element.querySelector('.element__image').src = this._link;
     this._element.querySelector('.element__image').alt = this._name
     this._element.querySelector('.element__title').textContent = this._name;
