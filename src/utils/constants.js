@@ -30,7 +30,6 @@ export const params = ({
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible',
   invalidInputClass: 'popup__input_invalid'
 });
@@ -51,11 +50,3 @@ export const containerImg = document.querySelector("#popup__container-img");
 // popup edit container
 export const nameInput = containerEdit.querySelector(".popup__input_name_title");
 export const jobInput = containerEdit.querySelector(".popup__input_name_yourself");
-
-// popup add container
-export const placeInput = containerAdd.querySelector(".popup__input_name_place");
-export const referenceInput = containerAdd.querySelector(".popup__input_name_reference");
-  
-// popup image container
-export const placeImage = containerImg.querySelector(".popup__place-image");
-export const placeTitle = containerImg.querySelector(".popup__place-title");

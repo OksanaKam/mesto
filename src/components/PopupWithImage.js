@@ -1,16 +1,17 @@
 import { Popup } from "./Popup.js";
-import { placeImage, placeTitle } from "../utils/constants.js";
 
 class PopupWithImage extends Popup {
     constructor(selectorPopup) {
         super(selectorPopup);
+        this._placeImage = this._popup.querySelector('.popup__place-image');
+        this._placeTitle = this._popup.querySelector('.popup__place-title');
     }
     
     open(name, link) {
         super.open();
-        placeImage.src = link;
-        placeImage.alt = name;
-        placeTitle.textContent = name;
+        this._placeImage.src = link;
+        this._placeImage.alt = name;
+        this._placeTitle.textContent = name;
     }
 }
 

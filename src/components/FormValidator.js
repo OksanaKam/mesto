@@ -6,7 +6,6 @@ class FormValidator {
       this._inputSelector = data.inputSelector;
       this._submitButtonSelector = data.submitButtonSelector;
       this._inactiveButtonClass = data.inactiveButtonClass;
-      this._inputErrorClass = data.inputErrorClass;
       this._errorClass = data.errorClass;
       this._invalidInputClass = data.invalidInputClass;
       this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
@@ -16,7 +15,7 @@ class FormValidator {
     // функция показа элемента ошибки
     _showInputError(inputElement, errorMessage) {
       const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
-      inputElement.classList.add(this._inputErrorClass);
+      inputElement.classList.add(this._invalidInputClass);
       errorElement.textContent = errorMessage;
       errorElement.classList.add(this._errorClass);
     };
@@ -24,7 +23,7 @@ class FormValidator {
     // функция скрытия элемента ошибки
     _hideInputError(inputElement) {
       const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
-      inputElement.classList.remove(this._inputErrorClass);
+      inputElement.classList.remove(this._invalidInputClass);
       errorElement.classList.remove(this._errorClass);
       errorElement.textContent = '';
     };
@@ -33,12 +32,8 @@ class FormValidator {
     _checkInputValidity(inputElement) {
       if (!inputElement.validity.valid) {
         this._showInputError(inputElement, inputElement.validationMessage);
-        inputElement.classList.add(this._invalidInputClass);
-        inputElement.invalid = false;
       } else {
         this._hideInputError(inputElement);
-        inputElement.classList.remove(this._invalidInputClass);
-        inputElement.invalid = true;
       }
     };
 
@@ -66,13 +61,13 @@ class FormValidator {
     // функция стилизации переключения кнопки
     _toggleButtonState() {
       if (this._hasInvalidInput()) {
-      this._enableSubmitButton();
+      this.enableSubmitButton();
       } else {
       this._disableSubmitButton();
       }
     }; 
 
-    _enableSubmitButton() {
+    enableSubmitButton() {
       this._buttonElement.classList.add(this._inactiveButtonClass);
       this._buttonElement.disabled = true;
     }
@@ -84,9 +79,6 @@ class FormValidator {
 
     // функция валидации форм
     enableValidation() {
-      this._form.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
       this._setEventListeners();
     }
 }

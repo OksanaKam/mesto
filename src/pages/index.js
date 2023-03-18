@@ -8,8 +8,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { initialCards, params, 
   buttonEditProfile, buttonAddCard, 
   popupEdit, popupAdd,
-  nameInput, jobInput,
-  placeInput, referenceInput } from "../utils/constants.js";
+  nameInput, jobInput } from "../utils/constants.js";
 
 const popupImage = new PopupWithImage('.popup_type_picture');
 
@@ -27,10 +26,7 @@ const createNewCard = (data, templateSelector,
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const cardElement = createNewCard(item, '.element-template', (name, link) => {
-      popupImage.open(name, link);
-      popupImage.setEventListeners();
-    });
+    const cardElement = createNewCard(item, '.element-template');
     cardsList.addItem(cardElement);
     },
   },
@@ -73,17 +69,15 @@ buttonEditProfile.addEventListener("click", () => {
 // открытие попапа добавления карточки места
 const openAddPopup = new PopupWithForm({
   selectorPopup: '.popup_type_card-add',
-  handleFormSubmit: () => {
-    const placeName = placeInput.value;
-    const placeLink = referenceInput.value;
-    const addNewCard = createNewCard({ name: placeName, link: placeLink}, '.element-template');
+  handleFormSubmit: (data) => {
+    const addNewCard = createNewCard(data, '.element-template');
     cardsList.addPrependItem(addNewCard);
   }
-})
+});
 
 openAddPopup.setEventListeners();
 
 buttonAddCard.addEventListener("click", () => {
   openAddPopup.open();
-  placeFormValidator._enableSubmitButton();
-})
+  placeFormValidator.enableSubmitButton();
+});
