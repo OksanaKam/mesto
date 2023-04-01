@@ -4,7 +4,6 @@ class PopupWithConfirmation extends Popup {
     constructor(selectorPopup) {
         super(selectorPopup)
         this._form = this._popup.querySelector('.popup__form');
-        /*this._submitButton = this._form.querySelector('.popup__button');*/
     }
 
     setEventListeners() {

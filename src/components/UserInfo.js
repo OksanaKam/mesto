@@ -7,15 +7,15 @@ class UserInfo {
 
     getUserInfo() {
         return {
-            title: this._selectorName.textContent,
-            yourself: this._selectorInfo.textContent,
+            name: this._selectorName.textContent,
+            about: this._selectorInfo.textContent,
         };
     }
     
     setUserInfo(userData) {
-        this._selectorName.textContent = userData.title;
-        this._selectorInfo.textContent = userData.yourself;
-        this._selectorAvatar.textContent = userData.link;
+        this._selectorName.textContent = userData.name;
+        this._selectorInfo.textContent = userData.about;
+        this._selectorAvatar.src = userData.avatar;
     }
 }
 

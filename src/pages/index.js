@@ -23,24 +23,25 @@ const api = new Api({
   },
 });
 
+const popupImage = new PopupWithImage('.popup_type_picture');
+const openConfirmPopup = new PopupWithConfirmation('.popup_type_card-del');
+const profileUserInfo = new UserInfo({ 
+  selectorName: '.profile__title', 
+  selectorInfo: '.profile__text',
+  selectorAvatar: '.profile__avatar'
+});
+
 let userId;
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then(([profileUser, cardsArray]) => {
   userId = profileUser._id;
-  profileTitle.textContent = profileUser.name;
-  profileText.textContent = profileUser.about;
-  profileAvatar.src = profileUser.avatar;
+  profileUserInfo.setUserInfo(profileUser);
   cardsList.renderer(cardsArray);
 })
 .catch((err) => {
   console.log(err);
-})
-
-const popupImage = new PopupWithImage('.popup_type_picture');
-const openConfirmPopup = new PopupWithConfirmation('.popup_type_card-del');
-
-openConfirmPopup.setEventListeners();
+});
 
 // функция создания новой карточки
 const createNewCard = (item, templateSelector) => {
@@ -89,6 +90,8 @@ const createNewCard = (item, templateSelector) => {
   return card.generateCard();
 } 
 
+openConfirmPopup.setEventListeners();
+
 // функция создания массива карточек
 const cardsList = new Section({
   renderer: (item) => {
@@ -111,12 +114,6 @@ avatarFormValidator.enableValidation();
 confirmFormValidator.enableValidation();
 
 // открытие попапа Профиля
-const profileUserInfo = new UserInfo({ 
-  selectorName: '.profile__title', 
-  selectorInfo: '.profile__text',
-  selectorAvatar: '.profile__avatar'
-});
-
 const openProfilePopup = new PopupWithForm({
   selectorPopup: '.popup_type_profile',
   handleFormSubmit: (userData) => {
@@ -139,8 +136,8 @@ openProfilePopup.setEventListeners();
 buttonEditProfile.addEventListener("click", () => {
   openProfilePopup.open();
   const userInfo = profileUserInfo.getUserInfo();
-  nameInput.value = userInfo.title;
-  jobInput.value = userInfo.yourself;
+  nameInput.value = userInfo.name;
+  jobInput.value = userInfo.about;
 });
 
 // открытие попапа добавления карточки места

@@ -36,9 +36,9 @@
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <form class="popup__container popup__form" id="popup__container-edit" name="myProfile" method="post">
               <h2 class="popup__title">Редактировать профиль</h2>
-              <input class="popup__input popup__input_name_title" id="title-input" type="text" name="title" value="" placeholder="name" minlength="2" maxlength="40" required>
+              <input class="popup__input popup__input_name_title" id="title-input" type="text" name="name" value="" placeholder="name" minlength="2" maxlength="40" required>
               <span class="popup__input-error title-input-error"></span>
-              <input class="popup__input popup__input_name_yourself" id="yourself-input" type="text" name="yourself" value="" placeholder="yourself" minlength="2" maxlength="200" required>
+              <input class="popup__input popup__input_name_yourself" id="yourself-input" type="text" name="about" value="" placeholder="yourself" minlength="2" maxlength="200" required>
               <span class="popup__input-error yourself-input-error"></span>
               <button class="popup__button popup__button_disabled" type="submit" aria-label="Сохранить" disabled>Сохранить</button>
             </form>
@@ -80,7 +80,7 @@
             <button class="popup__close" type="button" aria-label="Закрыть"></button>
             <form class="popup__container popup__form" id="popup__container-avatar" name="myAvatar" method="post" novalidate>
               <h2 class="popup__title">Обновить аватар</h2>
-              <input class="popup__input popup__input_name_avatar" id="avatar-input" type="url" name="link" value="" placeholder="" required>
+              <input class="popup__input popup__input_name_avatar" id="avatar-input" type="url" name="avatar" value="" placeholder="" required>
               <span class="popup__input-error avatar-input-error"></span>
               <button class="popup__button popup__button_disabled" type="submit" aria-label="Сохранить" disabled>Создать</button>
             </form>
