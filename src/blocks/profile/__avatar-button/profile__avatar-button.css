@@ -1,0 +1,14 @@
+.profile__avatar-button {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    margin: 47px 47px;
+    background-image: url(../../../images/pen1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    border: none;
+    display: none;
+    z-index: 2;
+}

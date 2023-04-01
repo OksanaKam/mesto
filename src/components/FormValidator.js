@@ -47,7 +47,7 @@ class FormValidator {
     // функция добавления слушателя всем полям формы
     _setEventListeners() {
       this._form.addEventListener('reset', () => {
-        this._disableSubmitButton();
+        this.disableSubmitButton();
       });
       
       this._inputList.forEach((inputElement) => {  
@@ -63,7 +63,7 @@ class FormValidator {
       if (this._hasInvalidInput()) {
       this.enableSubmitButton();
       } else {
-      this._disableSubmitButton();
+      this.disableSubmitButton();
       }
     }; 
 
@@ -72,7 +72,7 @@ class FormValidator {
       this._buttonElement.disabled = true;
     }
 
-    _disableSubmitButton() {
+    disableSubmitButton() {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
       this._buttonElement.disabled = false;
     }
