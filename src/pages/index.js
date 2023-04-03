@@ -10,10 +10,8 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { params, 
   buttonEditProfile, buttonAddCard, 
   popupEdit, popupAdd,
-  nameInput, jobInput,
   buttonAvatar,
-  popupAvatar, popupConfirm,
-  profileAvatar, profileTitle, profileText } from "../utils/constants.js";
+  popupAvatar, popupConfirm } from "../utils/constants.js";
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-63',
@@ -50,7 +48,6 @@ const createNewCard = (item, templateSelector) => {
     userId: userId, 
     handleCardClick: (name, link) => {
       popupImage.open(name, link);
-      popupImage.setEventListeners();
     },
     handleDeleteIconClick: (cardId) => {
       openConfirmPopup.open();
@@ -90,6 +87,7 @@ const createNewCard = (item, templateSelector) => {
   return card.generateCard();
 } 
 
+popupImage.setEventListeners();
 openConfirmPopup.setEventListeners();
 
 // функция создания массива карточек
@@ -117,16 +115,12 @@ confirmFormValidator.enableValidation();
 const openProfilePopup = new PopupWithForm({
   selectorPopup: '.popup_type_profile',
   handleFormSubmit: (userData) => {
-    openProfilePopup.renderLoading(true);
-    api.postUserInfo(userData)
+    return api.postUserInfo(userData)
     .then(userData => {
       profileUserInfo.setUserInfo(userData);
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      openProfilePopup.renderLoading(false);
     });
   }
 });
@@ -136,16 +130,14 @@ openProfilePopup.setEventListeners();
 buttonEditProfile.addEventListener("click", () => {
   openProfilePopup.open();
   const userInfo = profileUserInfo.getUserInfo();
-  nameInput.value = userInfo.name;
-  jobInput.value = userInfo.about;
+  openProfilePopup.setInputValues(userInfo);
 });
 
 // открытие попапа добавления карточки места
 const openAddPopup = new PopupWithForm({
   selectorPopup: '.popup_type_card-add',
   handleFormSubmit: (data) => {
-    openAddPopup.renderLoading(true);
-    api.addNewCard(data)
+    return api.addNewCard(data)
     .then((data) => {
       const addNewCard = createNewCard(data, '.element-template');
       cardsList.addPrependItem(addNewCard);
@@ -153,9 +145,6 @@ const openAddPopup = new PopupWithForm({
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => {
-      openAddPopup.renderLoading(false);
-    });
   }
 });
 
@@ -170,17 +159,13 @@ buttonAddCard.addEventListener("click", () => {
 const openAvatarPopup = new PopupWithForm({
   selectorPopup: '.popup_type_avatar-edit',
   handleFormSubmit: (userData) => {
-    openAvatarPopup.renderLoading(true);
-    api.changeAvatar(userData)
+    return api.changeAvatar(userData)
     .then((userData) => {
       profileUserInfo.setUserInfo(userData);
     })
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => {
-      openAvatarPopup.renderLoading(false);
-    });
   }
 });
 
